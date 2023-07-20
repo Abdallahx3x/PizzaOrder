@@ -13,10 +13,10 @@ import com.google.accompanist.systemuicontroller.rememberSystemUiController
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun PizzaApp(){
-    val systemUiController= rememberSystemUiController()
-    systemUiController.setStatusBarColor(Color.White,darkIcons = true)
-    systemUiController.setNavigationBarColor(Color.White)
     Scaffold {
+        val systemUiController= rememberSystemUiController()
+        systemUiController.setStatusBarColor(Color.White,darkIcons = true)
+        systemUiController.setNavigationBarColor(Color.White)
         HomeScreen()
     }
 }

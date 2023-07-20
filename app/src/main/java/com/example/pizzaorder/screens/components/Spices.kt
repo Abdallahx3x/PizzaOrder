@@ -1,11 +1,8 @@
 package com.example.pizzaorder.screens.components
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -33,34 +30,29 @@ fun SpicesScreen(state: Boolean, ss: Float, ll: MutableList<Int>) {
 
 
 
-    AnimatedVisibility(
-        true,
-        enter = slideInHorizontally(),
-        exit = fadeOut()
+
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(if (ss == 4f) 0.dp else 270.dp)
+            .scale(scale)
+
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(if (ss == 4f) 0.dp else 270.dp)
-                .scale(scale)
+        val random = Random.Default
+        var y = random.nextInt(130) + 50
+        var x = random.nextInt(100) + 115
+        //val c=create
 
-        ) {
-            val random = Random.Default
-            var y = random.nextInt(130) + 50
-            var x = random.nextInt(100) + 115
-            //val c=create
-
-            for (i in ll) {
-                Image(
-                    painter = painterResource(id = i),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(30.dp)
-                        .offset(y = y.dp, x = x.dp)
-                )
-                y = random.nextInt(130) + 50
-                x = random.nextInt(100) + 115
-            }
+        for (i in ll) {
+            Image(
+                painter = painterResource(id = i),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(30.dp)
+                    .offset(y = y.dp, x = x.dp)
+            )
+            y = random.nextInt(130) + 50
+            x = random.nextInt(100) + 115
         }
     }
 }
